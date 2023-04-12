@@ -32,6 +32,7 @@ public class Cliente {
 
     @Embedded
     private Endereco endereco;
+    private String password;
     private Boolean ativo;
     private Boolean admin;
 
@@ -41,7 +42,8 @@ public class Cliente {
         this.cpf = dados.cpf();
         this.dataNascimento = dados.dataNascimento();
         this.telefone = dados.telefone();
-        this.endereco = new Endereco(dados.endereco());
+//        this.endereco = new Endereco(dados.endereco());
+        this.password = dados.password();
         this.ativo = true;
         this.admin = false;
     }
@@ -56,6 +58,9 @@ public class Cliente {
 		if (dados.endereco() != null) {
 			this.endereco.atualizarInformacoes(dados.endereco());
 		}
+        if (dados.password() != null) {
+            this.password = dados.password();
+        }
 	}
 
 	public void inativar() {

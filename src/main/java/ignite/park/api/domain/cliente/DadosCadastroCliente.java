@@ -20,15 +20,18 @@ public record DadosCadastroCliente(
     @Pattern(regexp = "\\d{3}\\.?\\d{3}\\.?\\d{3}\\-?\\d{2}")
     String cpf,
 
-    @NotBlank(message = "{dataNascimento.obrigatorio}")
+//    @NotBlank(message = "{dataNascimento.obrigatorio}")
     String dataNascimento,
 
-    @NotBlank(message = "{telefone.obrigatorio}")
+//    @NotBlank(message = "{telefone.obrigatorio}")
     String telefone,
 
-    @NotNull(message = "{endereco.obrigatorio}")
-    @Valid
-    DadosEndereco endereco
+//    @NotNull(message = "{endereco.obrigatorio}")
+//    @Valid
+//    DadosEndereco endereco,
+
+    @NotBlank(message = "{password.obrigatorio}")
+    String password
 ) {
 
 }
