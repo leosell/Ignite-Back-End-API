@@ -29,12 +29,8 @@ public class AuthaticationController {
     @PostMapping
     @Transactional
     public ResponseEntity efetuarLogin(@RequestBody @Valid DadosAutenticacaoCliente dados) {
-        System.out.println(dados.email() + "\n" + dados.password());
         var autheticationToken = new UsernamePasswordAuthenticationToken(dados.email(), dados.password());
-        System.out.println(autheticationToken);
         var authetication = manager.authenticate(autheticationToken);
-        System.out.println(authetication);
-
         var tokenJWT = tokenService.gerarToken((Cliente) authetication.getPrincipal());
         System.out.println(tokenJWT);
 
