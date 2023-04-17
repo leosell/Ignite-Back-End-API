@@ -1,1 +1,0 @@
-ALTER TABLE clientes ADD password VARCHAR(200) NOT NULL;
