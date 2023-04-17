@@ -7,5 +7,5 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
     Page<Cliente> findAllByAtivoTrue(Pageable paginacao);
-    UserDetails findByEmail(String email);
+    UserDetails findByUsername(String username);
 }

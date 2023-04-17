@@ -32,6 +32,7 @@ public class Cliente {
 
     @Embedded
     private Endereco endereco;
+    private String username;
     private String password;
     private Boolean ativo;
     private Boolean admin;
@@ -43,6 +44,7 @@ public class Cliente {
         this.dataNascimento = dados.dataNascimento();
         this.telefone = dados.telefone();
 //        this.endereco = new Endereco(dados.endereco());
+        this.username = dados.email();
         this.password = dados.password();
         this.ativo = true;
         this.admin = false;

@@ -1,0 +1,1 @@
+ALTER TABLE clientes ADD username VARCHAR(100) NOT NULL;

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 @RestController
 @RequestMapping("/login")
 public class AuthaticationController {
@@ -29,7 +28,7 @@ public class AuthaticationController {
     @PostMapping
     @Transactional
     public ResponseEntity efetuarLogin(@RequestBody @Valid DadosAutenticacaoCliente dados) {
-        var autheticationToken = new UsernamePasswordAuthenticationToken(dados.email(), dados.password());
+        var autheticationToken = new UsernamePasswordAuthenticationToken(dados.username(), dados.password());
         var authetication = manager.authenticate(autheticationToken);
         var tokenJWT = tokenService.gerarToken((Cliente) authetication.getPrincipal());
         System.out.println(tokenJWT);
