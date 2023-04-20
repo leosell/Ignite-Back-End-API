@@ -4,9 +4,9 @@ public record DadosListagemCliente(
         Long id,
         String nome,
         String email,
-        String dataNascimento
+        String cpf
 ) {
     public DadosListagemCliente(Cliente cliente) {
-        this(cliente.getId(), cliente.getNome(), cliente.getEmail(), cliente.getDataNascimento());
+        this(cliente.getId(), cliente.getNome(), cliente.getEmail(), cliente.getCpf());
     }
 }
