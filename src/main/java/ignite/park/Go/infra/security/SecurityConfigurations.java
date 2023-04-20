@@ -28,15 +28,20 @@ public class SecurityConfigurations {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.csrf().disable()
+        http.cors().and().csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().authorizeHttpRequests()
-                .requestMatchers(HttpMethod.POST, "/login").permitAll()
+                .and().authorizeHttpRequests((authz) -> authz
+                        .requestMatchers(HttpMethod.POST, "/login").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/login/validation/**").permitAll()
+                        .anyRequest().authenticated()
+                )
+//                .requestMatchers(HttpMethod.POST, "/login").permitAll()
 //                .requestMatchers(HttpMethod.DELETE, "/cliente").hasRole("SUPER")
 //                .requestMatchers(HttpMethod.DELETE, "/estacionamento").hasRole("ADMIN")
-                .anyRequest().authenticated()
-                .and().addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
-                .build();
+//                .anyRequest().authenticated()
+                .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
+                .httpBasic();
+        return http.build();
     }
 
     @Bean
